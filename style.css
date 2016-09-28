@@ -1,0 +1,16 @@
+.btn {
+	float: right;
+}
+.table {
+	float: left;
+	border-radius: 2px;
+	border-color: blue;
+	background-color: #e6e6fa;
+}
+.row {
+	text-align: center;
+}
+
+.heading {
+	background-color: #fffbf5;
+}
