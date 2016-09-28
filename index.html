@@ -66,7 +66,7 @@
 					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}<button class="btn" ng-click="pakket.selected = true; vm.getTotal()">Add</button></th>
 				</tr>
 				<tr>
-					<th class="pakketTotaal table row"> Totaal prijs pakket: <span ng-bind="vm.getTotal(product.price | currency: )"></span></th>			
+					<th class="pakketTotaal table row"> Totaal prijs pakket: <span ng-bind="vm.getTotal(product.price | currency: '&euro' )"></span></th>			
 				</tr>
 			</tbody>
 		</table>
