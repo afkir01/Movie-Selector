@@ -25,9 +25,9 @@
 				  <th class="heading">Seriepakket</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody>  <!-- met nf-if kun je de index binnen een array aangeven -->
 				<tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 0 && $index <= 1">
-					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }} <button class="btn"  ng-click="vm.total()" >Add</button></th>
+					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }} <button class="btn"  ng-click="pakket.selected = true; vm.getTotal()" >Add</button></th>
 				</tr>
 			</tbody>
 		</table>
@@ -39,7 +39,7 @@
 			</thead>
 			<tbody>
 			    <tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 2 && $index <= 4">
-					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}<button class="btn" ng-click="showDetail(pakket)">Add</button></th>
+					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}<button class="btn" ng-click="pakket.selected = true; vm.getTotal()">Add</button></th>
 				</tr>
 			</tbody>
 		</table>
@@ -49,9 +49,9 @@
 				  <th class="heading">Lancering films/series</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody>  
 				<tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 5 && $index <= 8">
-					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}<button  class="btn" ng-click="showDetail(pakket)">Add</button></th>
+					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}<button  class="btn" ng-click="pakket.selected = true; vm.getTotal()">Add</button></th>
 				</tr>
 			</tbody>
 		</table>
@@ -63,11 +63,10 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 9 && $index <= 11">
-					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}<button class="btn" ng-click="showDetail(pakket)">Add</button></th>
+					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}<button class="btn" ng-click="pakket.selected = true; vm.getTotal()">Add</button></th>
 				</tr>
 				<tr>
-					<th class="pakketTotaal table row">Totaal prijs pakket 
-					</th>
+					<th class="pakketTotaal table row"> Totaal prijs pakket: <span ng-bind="vm.getTotal(product.price | currency: )"></span></th>			
 				</tr>
 			</tbody>
 		</table>
