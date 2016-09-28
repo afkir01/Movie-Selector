@@ -26,7 +26,10 @@
 				</tr>
 			</thead>
 			<tbody>  <!-- met nf-if kun je de index binnen een array aangeven -->
-				<tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 0 && $index <= 1">
+				<tr ng-repeat="pakket in vm.pakketten" ng-if="$index == 0">
+					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}</th>
+				</tr>
+				<tr ng-repeat="pakket in vm.pakketten" ng-if="$index == 1">
 					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }} <button class="btn"  ng-click="pakket.selected = true; vm.getTotal()" >Add</button></th>
 				</tr>
 			</tbody>
@@ -66,10 +69,17 @@
 					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}<button class="btn" ng-click="pakket.selected = true; vm.getTotal()">Add</button></th>
 				</tr>
 				<tr>
-					<th class="pakketTotaal table row"> Totaal prijs pakket: <span ng-bind="vm.getTotal(product.price | currency: '&euro' )"></span></th>			
+					<th class="pakketTotaal table row"> Totaal prijs pakket: <span ng-bind="vm.getTotal(product.price | currency: '&euro')"></span></th>			
 				</tr>
 			</tbody>
 		</table>
+		
+		<div>
+		 Ik zou geen van deze opties kiezen!!!
+        <span ng-click="resetall()"> </span>
+        <input type="radio" ng-model="item.selected" />
+    </div>
+		
 	</div>
 </body>
 </html>

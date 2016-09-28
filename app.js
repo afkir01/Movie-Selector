@@ -90,10 +90,12 @@ function pakkettenController($scope, $sce) {
 	}   
     ];
 
+	
 	vm.safeHTML = function(t) {
 		return $sce.trustAsHtml(t);
 	};
 	
+// Hier gebruik ik een foreach loop om een geselecteerde pakket toe te voegen aan het totaal 	
 	
 	vm.getTotal = function(){
 		var total = 5;
