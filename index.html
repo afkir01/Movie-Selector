@@ -17,23 +17,30 @@
 	
 </head>
 <body ng-controller="pakkettenController as vm">
-	<div class="container">
+	
 		<h1>HBO</h1>
-		<table class="table">
-			<thead>
-				<tr>
-				  <th class="heading">Seriepakket</th>
-				</tr>
-			</thead>
-			<tbody>  <!-- met nf-if kun je de index binnen een array aangeven -->
-				<tr ng-repeat="pakket in vm.pakketten" ng-if="$index == 0">
-					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}</th>
-				</tr>
-				<tr ng-repeat="pakket in vm.pakketten" ng-if="$index == 1">
-					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }} <button class="btn"  ng-click="pakket.selected = true; vm.getTotal()" >Add</button></th>
-				</tr>
-			</tbody>
-		</table>
+	<div class="container">	
+		<div class="border">
+			<div class="seriepakket col-md-6">
+				<table class="table">
+					<thead>
+						<tr>
+						  <th class="heading">Seriepakket</th>
+						</tr>
+					</thead>
+					<tbody>  <!-- met nf-if kun je de index binnen een array aangeven -->
+						<tr ng-repeat="pakket in vm.pakketten" ng-if="$index == 0">
+							<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}</th>
+						</tr>
+						<tr ng-repeat="pakket in vm.pakketten" ng-if="$index == 1">
+							<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }} <button class="btn"  ng-click="pakket.selected = true; vm.getTotal()" >Add</button></th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div class="films col-md-6">
 		<table class="table">
 			<thead>
 				<tr>
@@ -46,6 +53,11 @@
 				</tr>
 			</tbody>
 		</table>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="lancering col-md-6">
 		<table class="table">
 			<thead>
 				<tr>
@@ -58,6 +70,9 @@
 				</tr>
 			</tbody>
 		</table>
+		</div>
+		
+		<div class="kijken col-md-6">
 		<table class="table">
 			<thead>
 				<tr>
@@ -68,18 +83,17 @@
 				<tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 9 && $index <= 11">
 					<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}<button class="btn" ng-click="pakket.selected = true; vm.getTotal()">Add</button></th>
 				</tr>
-				<tr>
-					<th class="pakketTotaal table row"> Totaal prijs pakket: <span ng-bind="vm.getTotal(product.price | currency: '&euro')"></span></th>			
-				</tr>
-			</tbody>
+			</tbody>	
 		</table>
-		
-		<div>
-		 Ik zou geen van deze opties kiezen!!!
-        <span ng-click="resetall()"> </span>
-        <input type="radio" ng-model="item.selected" />
-    </div>
-		
+		</div>
 	</div>
+	<div class="container">
+		<table class="cart col-md-8">
+			<h1>Totaal pakket Prijs: <span ng-bind="vm.getTotal(product.price | currency: '&euro;')"></span></h1>	
+		        <th class="pakketTotaal table row" ></th>
+					<tr ng-if="pakket.selected == true"  ng-repeat="pakket in vm.pakketten">
+						<td> {{ pakket.name  }} ({{ pakket.price | currency: '&euro;'}})</td>
+					</tr>
+		</table>
 </body>
 </html>

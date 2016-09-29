@@ -4,6 +4,7 @@ var pakketten_price_currency = '&euro;';
 
 var pakketten_price_total = 5;
 
+var pakketten_price_decimals = true;
 
 
 	// declaring the module //
@@ -18,10 +19,12 @@ app
 function pakkettenController($scope, $sce) {
 	
 	var vm = this;
+		
 	
 	vm.pakketten_price_currency = pakketten_price_currency;
 	vm.pakketten_price_total = vm.pakketten_total;
-	
+	cart = []	
+	cart = vm.cart;
 	// array with items to select 
 	
 	// vm.pakketten.name;
@@ -31,7 +34,8 @@ function pakkettenController($scope, $sce) {
 	vm.pakketten = [
 	{
         name: "HBO Series",
-        price: 5
+        price: 5,
+		selected: true
 	},
     {
         name: "Andere premium series",
@@ -95,20 +99,21 @@ function pakkettenController($scope, $sce) {
 		return $sce.trustAsHtml(t);
 	};
 	
+	console.log("test test")
+	
 // Hier gebruik ik een foreach loop om een geselecteerde pakket toe te voegen aan het totaal 	
 	
 	vm.getTotal = function(){
-		var total = 5;
+		var total = 0;
 		
 		vm.pakketten.forEach(function(product) {
 			if (product.selected == true) {
 				total = total+product.price;
 			}
-			console.log(product.price);
 		});
 
 		return total;
 	};
-
+	
 }]);
 

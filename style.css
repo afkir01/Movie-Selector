@@ -1,16 +1,28 @@
+body{
+	margin: 0 auto;
+}
+
 .btn {
 	float: right;
-}
-.table {
-	float: left;
-	border-radius: 2px;
-	border-color: blue;
-	background-color: #e6e6fa;
 }
 .row {
 	text-align: center;
 }
-
+.container {
+	width: 100%;
+	text-indent: left;
+	text-align: center;
+	border-color: #92fcf0;
+	border-radius: 5px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
 .heading {
-	background-color: #fffbf5;
+	background-color: white;
+}
+.cart {
+	display: inline-block;
+}
+.container h1 {
+	text-align: left;
 }
