@@ -18,7 +18,8 @@
 </head>
 <body ng-controller="pakkettenController as vm">
 	
-		<h1>HBO</h1>
+	<h1>HBO</h1>
+		
 	<div class="container">	
 		<div class="border">
 			<div class="seriepakket col-md-6">
@@ -28,7 +29,7 @@
 						  <th class="heading">Seriepakket</th>
 						</tr>
 					</thead>
-					<tbody>  <!-- met nf-if kun je de index binnen een array aangeven -->
+					<tbody>  
 						<tr ng-repeat="pakket in vm.pakketten" ng-if="$index == 0">
 							<th class="row">{{pakket.name}} <span ng-bind-html="vm.safeHTML(vm.pakketten_price_currency)"></span>{{ pakket.price }}</th>
 						</tr>
@@ -89,7 +90,7 @@
 	</div>
 	<div class="container">
 		<table class="cart col-md-8">
-			<h1>Totaal pakket Prijs: <span ng-bind="vm.getTotal(product.price | currency: '&euro;')"></span></h1>	
+			<h3>Totaal pakket Prijs: <span ng-bind="vm.getTotal(product.price | currency: '&euro;')"></span></h3>	
 		        <th class="pakketTotaal table row" ></th>
 					<tr ng-if="pakket.selected == true"  ng-repeat="pakket in vm.pakketten">
 						<td> {{ pakket.name  }} ({{ pakket.price | currency: '&euro;'}})</td>

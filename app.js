@@ -101,7 +101,7 @@ function pakkettenController($scope, $sce) {
 	
 	console.log("test test")
 	
-// Hier gebruik ik een foreach loop om een geselecteerde pakket toe te voegen aan het totaal 	
+	
 	
 	vm.getTotal = function(){
 		var total = 0;
