@@ -9,7 +9,7 @@ var pakketten_price_decimals = true;
 
 	// declaring the module //
 
-var app = angular.module("movieSelector", ['ngSanitize']); 
+var app = angular.module("movieSelector", []); 
 
 	//declaring the controller //
 
@@ -23,8 +23,7 @@ function pakkettenController($scope, $sce) {
 	
 	vm.pakketten_price_currency = pakketten_price_currency;
 	vm.pakketten_price_total = vm.pakketten_total;
-	cart = []	
-	cart = vm.cart;
+
 	// array with items to select 
 	
 	// vm.pakketten.name;
@@ -101,7 +100,7 @@ function pakkettenController($scope, $sce) {
 	
 	console.log("test test")
 	
-	
+	// looping through the array and add each item that is selected to the total!
 	
 	vm.getTotal = function(){
 		var total = 0;

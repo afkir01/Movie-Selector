@@ -7,12 +7,16 @@ body{
 }
 .row {
 	text-align: center;
+	border-radius: 2px;
+	border-style: solid;
+	border-color: #42f4df !important;
 }
 .container {
 	width: 100%;
-	text-indent: left;
+	border-style: solid;
+	text-align: left;
 	text-align: center;
-	border-color: #92fcf0;
+	border-color: #42f4df;
 	border-radius: 5px;
 	margin-top: 20px;
 	margin-bottom: 10px;
