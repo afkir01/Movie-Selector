@@ -162,7 +162,7 @@ function pakkettenController($scope, $sce) {
 			if (vm.checkBlockIfSelected(disabled_lancering) == false) {
 				vm.disableBlock(disabled_manier_kijken);
 			}
-		}		
+		}
 	};
 
 	vm.checkBlockIfSelected = function(block) {
@@ -185,7 +185,6 @@ function pakkettenController($scope, $sce) {
 		}
 		
 	}
-
 
 
 	vm.enablePakket = function(key) {
