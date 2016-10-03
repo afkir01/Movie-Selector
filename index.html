@@ -104,7 +104,7 @@
 				<td><button type="submit" class="btn btn-default"  ng-hide="$index == 0" ng-click="pakket.selected = false; vm.disablePakket($index);"><i class="fa fa-minus-circle" aria-hidden="true"></i></input></td>
 			</tr>
 			<tr>
-				<td><input class="resetselection" type="checkbox" ng-hide="pakket.selected = false" <!-- ng-checked="pakket.selected = false; $index >= 1 && $index <= 11" --></input>Ik zou geen een van deze pakketten kiezen!</td>
+				<td><input class="resetselection" type="checkbox" ng-hide="$index == 0" ng-click="vm.clearAll();"></input>Ik zou geen een van deze pakketten kiezen!</td>
 			</tr>
 	</div>
 </body>

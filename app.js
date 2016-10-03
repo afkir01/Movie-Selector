@@ -129,12 +129,6 @@ function pakkettenController($scope, $sce) {
 		return total;
 	};
 	
-	
-	vm.reset = function() { 
-		vm.pakketten = {}; 
-		
-		};
-
 
 	vm.disableBlock = function(block) {
 		//console.log(block);
@@ -220,7 +214,21 @@ function pakkettenController($scope, $sce) {
 				vm.pakketten[val].disabled = false;
 			}
 
-		}	
+		}
+
+	};
+	
+	
+	console.log("Test 1");
+	vm.clearAll = function (){
+			
+		vm.pakketten.forEach(function(pakket, index) {
+			if (index == 0){
+				return true;
+			}
+			
+			pakket.selected = false;
+	
+	});
 	};
 }]);
-
