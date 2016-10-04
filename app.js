@@ -227,7 +227,7 @@ function pakkettenController($scope, $sce) {
 			}
 			
 			pakket.selected = false;
-	
+		
 	});
 	};
 }]);

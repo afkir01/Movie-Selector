@@ -37,3 +37,6 @@ body{
 .container2 {
 	text-align: center;	
 }
+.selected {
+	background-color: #42f4bf;
+}
