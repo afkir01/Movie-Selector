@@ -16,7 +16,6 @@ var app = angular.module("movieSelector", []);
 
 	//declaring the controller //
 
-	
 app
 .controller('pakkettenController', ['$scope', '$sce', 
 function pakkettenController($scope, $sce) {
@@ -28,11 +27,7 @@ function pakkettenController($scope, $sce) {
 	vm.pakketten_price_total = vm.pakketten_total;
 
 	// array with items to select 
-	
-	// vm.pakketten.name;
-	// vm.pakketten.price;
-	// vm.pakketten.selected true/false
-	
+		
 	vm.pakketten = [
 	{
         name: "HBO Series",
@@ -109,10 +104,6 @@ function pakkettenController($scope, $sce) {
     ];
 
 	
-	vm.safeHTML = function(t) {
-		return $sce.trustAsHtml(t);
-	};
-	
 	console.log("test test")
 	
 	// looping through the array and add each item that is selected to the total!
@@ -129,7 +120,8 @@ function pakkettenController($scope, $sce) {
 		return total;
 	};
 	
-
+	// disable block of items if items on block before are not selected
+	
 	vm.disableBlock = function(block) {
 		//console.log(block);
 		for(var i = 0; i <= block.length - 1; i++) {

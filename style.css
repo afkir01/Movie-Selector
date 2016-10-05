@@ -7,14 +7,16 @@ body{
 .btn {
 	float: right;
 }
-.table .row {
+.table {
 	text-align: center;
-	border-radius: 2px;
+	border-radius: 5px;
 	border-style: solid;
-	border-color: #42f4df !important;
+	border-color: black;
+	margin-top: 15px;
 }
 .container {
-	width: 100%;
+	float: left;
+	width: 50%;
 	border-style: solid;
 	text-align: center;
 	border-color: #42f4df;
@@ -22,21 +24,30 @@ body{
 	margin-top: 20px;
 	margin-bottom: 10px;
 }
+
 .heading {
 	background-color: white;
 }
-.cart {
-	display: inline-block;
-}
-.container h1 {
-	text-align: left;
-}
-.table td .btn {
-	position: center;
-}
-.container2 {
-	text-align: center;	
-}
 .selected {
 	background-color: #42f4bf;
+}
+.totalselection {
+	background-color: #ecefe8;
+}
+.container2 {
+	float: right;
+	width: 40%;
+	margin-top: 20px;
+	text-align: center;
+	border-style: solid;
+	border-color: #42f4df;
+}
+tbody {
+	display: center;
+}
+.pointer {
+    cursor: pointer;
+}
+.pakketTotaal .table .row {
+	align: center;
 }
