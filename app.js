@@ -17,11 +17,21 @@ var app = angular.module("movieSelector", []);
 	//declaring the controller //
 
 app
-.controller('pakkettenController', ['$scope', '$sce', 
-function pakkettenController($scope, $sce) {
+.controller('pakkettenController', ['$scope', '$sce', '$http', 
+function pakkettenController($scope, $sce, $http) {
 	
 	var vm = this;
+	
+	vm.movie_info = {};
 		
+	$http({
+		method: 'GET',
+		url: 'http://www.omdbapi.com/?t=Matrix&y=&plot=short&r=json'
+	}).then(function successCallback(response) {
+		vm.movie_info = response.data;
+	}, function errorCallback(response) {
+		console.log(response);
+	});		
 	
 	vm.pakketten_price_currency = pakketten_price_currency;
 	vm.pakketten_price_total = vm.pakketten_total;
@@ -123,7 +133,7 @@ function pakkettenController($scope, $sce) {
 	// disable block of items if items on block before are not selected
 	
 	vm.disableBlock = function(block) {
-		//console.log(block);
+		
 		for(var i = 0; i <= block.length - 1; i++) {
 			var val = block[i];
 			
@@ -177,6 +187,21 @@ function pakkettenController($scope, $sce) {
 		}
 		
 	}
+	
+	// function voor disabling pakket row
+	
+	vm.checkTrForSelection = function(pakket, index) {
+
+		if (pakket.disabled == true) {
+			return;
+		}
+		
+		pakket.selected = true;
+		
+		vm.enablePakket(index);
+		
+		
+	};
 
 
 	vm.enablePakket = function(key) {
@@ -185,6 +210,7 @@ function pakkettenController($scope, $sce) {
 			for(var i = 0; i <= disabled_films.length - 1; i++) {
 				var val = disabled_films[i];
 				vm.pakketten[val].disabled = false;
+				
 			}
 
 		}
@@ -194,6 +220,7 @@ function pakkettenController($scope, $sce) {
 				var val = disabled_lancering[i];
 				
 				vm.pakketten[val].disabled = false;
+				
 			}
 
 		}
@@ -203,6 +230,7 @@ function pakkettenController($scope, $sce) {
 				var val = disabled_manier_kijken[i];
 				
 				vm.pakketten[val].disabled = false;
+				
 			}
 
 		}
@@ -222,4 +250,17 @@ function pakkettenController($scope, $sce) {
 		
 	});
 	};
+	
+	vm.checkOpacity = function(arr) {
+		
+		for(var i = 0; i <= arr.length - 1; i++) {
+			var id = arr[i];
+			
+			if (vm.pakketten[id].selected == true) {
+				return false;
+			}
+		}
+		
+		return true;
+	}
 }]);

@@ -28,8 +28,7 @@
 	<h1>HBO</h1>
 		
 	<div class="container">	
-	
-		<div class="seriepakket col-md-6">
+		<div class="seriepakket col-xs-6 col-md-6">
 			<table class="table">
 				<thead>
 					<tr>
@@ -40,62 +39,59 @@
 					<tr ng-repeat="pakket in vm.pakketten" ng-if="$index == 0" ng-class="{selected: pakket.selected == true}">  <!-- style van tr verandern -->
 						<td class="row">{{pakket.name}} <strong>{{ pakket.price | currency: '&euro;'}}</strong></td>
 					</tr>
-					<tr ng-repeat="pakket in vm.pakketten" ng-if="$index == 1" ng-class="{selected: pakket.selected == true}" ng-click="pakket.selected = true" class="pointer">
+					<tr ng-repeat="pakket in vm.pakketten" ng-if="$index == 1" ng-class="{selected: pakket.selected == true}" ng-click="vm.checkTrForSelection(pakket, $index);" class="pointer">
 						<td class="row">{{pakket.name}} <strong>{{ pakket.price | currency: '&euro;'}} </strong><button type="submit" class="btn btn-default"  ng-click="pakket.selected = true; vm.getTotal(); vm.enablePakket($index);"  ng-disabled="pakket.selected == true || pakket.disabled == true"><i class="fa fa-plus-circle" aria-hidden="true" ng-if="pakket.selected == false"></i><i class="fa fa-check" aria-hidden="true" ng-if="pakket.selected == true"></i></button></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 			
-		<div class="films col-md-6">
-		<table class="table">
-			<thead>
-				<tr>
-				  <th class="heading">Films</th>
-				</tr>
-			</thead>
-			<tbody>
-			    <tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 2 && $index <= 4" ng-class="{selected: pakket.selected == true}" ng-click="pakket.selected = true" class="pointer">
-					<td class="row">{{pakket.name}} <strong>{{ pakket.price | currency: '&euro;'}}</strong><button type="submit" class="btn btn-default" ng-click="pakket.selected = true; vm.getTotal(); vm.enablePakket($index);" ng-disabled="pakket.selected == true || pakket.disabled == true"><i class="fa fa-plus-circle" aria-hidden="true" ng-if="pakket.selected == false"></i><i class="fa fa-check" aria-hidden="true" ng-if="pakket.selected == true";></i></button></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="col-xs-6 col-md-6" ng-class="{'opacity-3': vm.checkOpacity([1])}">
+			<table class="table">
+				<thead>
+					<tr>
+					  <th class="heading">Films</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 2 && $index <= 4" ng-class="{selected: pakket.selected == true}" ng-click="vm.checkTrForSelection(pakket, $index);" class="pointer">
+						<td class="row">{{pakket.name}} <strong>{{ pakket.price | currency: '&euro;'}}</strong><button type="submit" class="btn btn-default" ng-click="pakket.selected = true; vm.getTotal(); vm.enablePakket($index);" ng-disabled="pakket.selected == true || pakket.disabled == true"><i class="fa fa-plus-circle" aria-hidden="true" ng-if="pakket.selected == false"></i><i class="fa fa-check" aria-hidden="true" ng-if="pakket.selected == true";></i></button></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-		
-	
 
-		
-		<div class="lancering col-md-6">
-		<table class="table">
-			<thead>
-				<tr>
-				  <th class="heading">Lancering films/series</th>
-				</tr>
-			</thead>
-			<tbody>  
-				<tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 5 && $index <= 8" ng-class="{selected: pakket.selected == true}" ng-click="pakket.selected = true" class="pointer">
-					<td class="row">{{pakket.name}} <strong>{{ pakket.price | currency: '&euro;'}}</strong><button  type="submit" class="btn btn-default" ng-click="pakket.selected = true; vm.getTotal(); vm.enablePakket($index);" ng-disabled="pakket.selected == true || pakket.disabled == true"><i class="fa fa-plus-circle" aria-hidden="true" ng-if="pakket.selected == false"></i><i class="fa fa-check" aria-hidden="true" ng-if="pakket.selected == true"></i></button></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="col-xs-6 col-md-6" ng-class="{'opacity-3': vm.checkOpacity([2, 3, 4])}">
+			<table class="table">
+				<thead>
+					<tr>
+					  <th class="heading">Lancering films/series</th>
+					</tr>
+				</thead>
+				<tbody>  
+					<tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 5 && $index <= 8" ng-class="{selected: pakket.selected == true}" ng-click="vm.checkTrForSelection(pakket, $index);" class="pointer">
+						<td class="row">{{pakket.name}} <strong>{{ pakket.price | currency: '&euro;'}}</strong><button  type="submit" class="btn btn-default" ng-click="pakket.selected = true; vm.getTotal(); vm.enablePakket($index);" ng-disabled="pakket.selected == true || pakket.disabled == true"><i class="fa fa-plus-circle" aria-hidden="true" ng-if="pakket.selected == false"></i><i class="fa fa-check" aria-hidden="true" ng-if="pakket.selected == true"></i></button></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		
-		<div class="kijken col-md-6">
-		<table class="table">
-			<thead>
-				<tr>
-				  <th class="heading">Manier van kijken</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 9 && $index <= 11" ng-class="{selected: pakket.selected == true}" ng-click="pakket.selected = true" class="pointer">
-					<td class="row">{{pakket.name}} <strong>{{ pakket.price | currency: '&euro;'}}</strong><button type="submit" class="btn btn-default" ng-click="pakket.selected = true; vm.getTotal(); vm.enablePakket($index);" ng-disabled="pakket.selected == true || pakket.disabled == true" ><i class="fa fa-plus-circle" aria-hidden="true" ng-if="pakket.selected == false"></i><i class="fa fa-check" aria-hidden="true" ng-if="pakket.selected == true"></i></button></td>
-				</tr>
-			</tbody>	
-		</table>
+		<div class="col-xs-6 col-md-6" ng-class="{'opacity-3': vm.checkOpacity([5, 6, 7, 8])}">
+			<table class="table">
+				<thead>
+					<tr>
+					  <th class="heading">Manier van kijken</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="pakket in vm.pakketten" ng-if="$index >= 9 && $index <= 11" ng-class="{selected: pakket.selected == true}" ng-click="vm.checkTrForSelection(pakket, $index);" class="pointer">
+						<td class="row" >{{pakket.name}} <strong>{{ pakket.price | currency: '&euro;'}}</strong><button type="submit" class="btn btn-default" ng-click="pakket.selected = true; vm.getTotal(); vm.enablePakket($index);" ng-disabled="pakket.selected == true || pakket.disabled == true" ><i class="fa fa-plus-circle" aria-hidden="true" ng-if="pakket.selected == false"></i><i class="fa fa-check" aria-hidden="true" ng-if="pakket.selected == true"></i></button></td>
+					</tr>
+				</tbody>	
+			</table>
 		</div>
-			
 	</div>
+	
 	<div class="container2">
 		<table class="cart col-md-12">
 			<h3><strong>Totaal pakket Prijs: <span ng-bind="vm.getTotal()| currency: '&euro;'"></span></strong></h3>	
@@ -104,9 +100,20 @@
 				<td><button type="submit" class="btn btn-default"  ng-hide="$index == 0" ng-click="pakket.selected = false; vm.disablePakket($index);"><i class="fa fa-minus-circle" aria-hidden="true"></i></input></td>
 			</tr>
 			<tr>
-				<td><button class="btn btn-default" type="submit"  ng-click="vm.clearAll();">Reset</button></td>
+				<td><button class="reset btn btn-default" type="submit"  ng-click="vm.clearAll();">Reset</button></td>
 			</tr>
 		</table>
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-3">
+			 Actors:
+			</div>
+			<div class="col-xs-9">
+			{{ vm.movie_info.Actors }}
+			</div>
+		</div>
 	</div>
 </body>
 </html>

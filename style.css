@@ -3,7 +3,6 @@ body{
 	padding-left: 40px;
 	padding-right: 40px;
 }
-
 .btn {
 	float: right;
 }
@@ -24,15 +23,11 @@ body{
 	margin-top: 20px;
 	margin-bottom: 10px;
 }
-
 .heading {
 	background-color: white;
 }
 .selected {
 	background-color: #42f4bf;
-}
-.totalselection {
-	background-color: #ecefe8;
 }
 .container2 {
 	float: right;
@@ -49,5 +44,9 @@ tbody {
     cursor: pointer;
 }
 .pakketTotaal .table .row {
-	align: center;
+	display: center;
+}
+
+.opacity-3 {
+	opacity: 0.3;
 }
