@@ -24,6 +24,8 @@ function pakkettenController($scope, $sce, $http) {
 	
 	vm.movie_info = {};
 		
+		// making the API to get movie info!
+		
 	$http({
 		method: 'GET',
 		url: 'http://www.omdbapi.com/?t=Matrix&y=&plot=short&r=json'
@@ -36,7 +38,7 @@ function pakkettenController($scope, $sce, $http) {
 	vm.pakketten_price_currency = pakketten_price_currency;
 	vm.pakketten_price_total = vm.pakketten_total;
 
-	// array with items to select 
+	// array with pakketten to select 
 		
 	vm.pakketten = [
 	{
@@ -203,7 +205,8 @@ function pakkettenController($scope, $sce, $http) {
 		
 	};
 
-
+	// function to enable a pakket if former packet is selected
+	
 	vm.enablePakket = function(key) {
 		if (key == 1) {
 
@@ -237,6 +240,7 @@ function pakkettenController($scope, $sce, $http) {
 
 	};
 	
+	// function to clear all selected item with a click on the button
 	
 	console.log("Test 1");
 	vm.clearAll = function (){
@@ -250,6 +254,8 @@ function pakkettenController($scope, $sce, $http) {
 		
 	});
 	};
+	
+	// function to check the opacity of the div 
 	
 	vm.checkOpacity = function(arr) {
 		
