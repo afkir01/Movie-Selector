@@ -6,7 +6,7 @@ var pakketten_price_total = 5;
 
 var pakketten_price_decimals = true;
 
-var disabled_films = [2, 3, 4];
+var disabled_films = [2, 3, 4, 12];
 var disabled_lancering = [5, 6, 7, 8];
 var disabled_manier_kijken = [9, 10, 11];
 
@@ -28,12 +28,14 @@ function pakkettenController($scope, $sce, $http) {
 		
 	$http({
 		method: 'GET',
-		url: 'http://www.omdbapi.com/?t=Matrix&y=&plot=short&r=json'
+		url: 'http://www.omdbapi.com/?t=The+matrix&y=&plot=short&r=json'
 	}).then(function successCallback(response) {
 		vm.movie_info = response.data;
 	}, function errorCallback(response) {
 		console.log(response);
 	});		
+	
+	vm.mustShow = false;
 	
 	vm.pakketten_price_currency = pakketten_price_currency;
 	vm.pakketten_price_total = vm.pakketten_total;
@@ -112,8 +114,14 @@ function pakkettenController($scope, $sce, $http) {
         price: 1.5,
 		selected: false,
 		disabled: true
-	}   
-    ];
+	},	
+	{  
+		name: "The Matrix",
+        price: 1.5,
+		selected: false,
+		disabled: true
+    }
+	];
 
 	
 	console.log("test test")
@@ -194,6 +202,7 @@ function pakkettenController($scope, $sce, $http) {
 	
 	vm.checkTrForSelection = function(pakket, index) {
 
+
 		if (pakket.disabled == true) {
 			return;
 		}
@@ -217,7 +226,7 @@ function pakkettenController($scope, $sce, $http) {
 			}
 
 		}
-		else if (key >= 2 && key <= 4) {
+		else if (key >= 2 && key <= 4 || key == 12) {
 			
 			for(var i = 0; i <= disabled_lancering.length - 1; i++) {
 				var val = disabled_lancering[i];
